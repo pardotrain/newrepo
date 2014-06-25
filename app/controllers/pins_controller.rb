@@ -15,6 +15,14 @@ class PinsController < ApplicationController
     @pin = current_user.pins.build
   end
 
+  def index
+   @pins = Pin.all.order("created_at DESC")
+  end
+
+  def index
+   @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page])
+  end
+
   def edit
   end
 
